@@ -1,58 +1,32 @@
 <template>
   <div id="app">
-    <Todos v-bind:todos="todos" v-on:del-todo="delTodo"/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script>
-import Todos from './components/Todos';
-
-export default {
-  name: 'App',
-  components: {
-    Todos
-  },
-  data(){
-    return{
-     todos: [
-       {
-         id:1,
-         title:"Todo 1",
-         completed: false
-       },
-       {
-         id:2,
-         title:"Todo 2",
-         completed: false
-       },
-       {
-         id:3,
-         title:"Todo 3",
-         completed: false
-       },{
-         id:4,
-         title:"Todo 4",
-         completed: false
-       },
-      ]
-    }
-  },
-  methods:{
-    delTodo(id){
-      this.todos = this.todos.filter(todo => todo.id !== id);
-    }
-  }
-}
-</script>
-
 <style>
-* {
-  padding: 0;
-  margin :0;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 
-body{
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.4;
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
